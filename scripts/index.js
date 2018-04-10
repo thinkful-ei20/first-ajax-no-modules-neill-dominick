@@ -241,7 +241,8 @@ const decorateResponse = function (response) {
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
 const generateVideoItemHtml = function (video) {
-
+  return `
+    <li> <img src="${video.thumbnail}"> <p>${video.title}</p> </li> `;
 };
 
 // TASK:
