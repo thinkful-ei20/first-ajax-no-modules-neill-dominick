@@ -250,7 +250,7 @@ const generateVideoItemHtml = function (video) {
 // objects and sets the array as the value held in store.items
 // TEST IT!
 const addVideosToStore = function (videos) {
-
+  store.videos = videos;
 };
 
 // TASK:
@@ -259,7 +259,7 @@ const addVideosToStore = function (videos) {
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function () {
-
+  
 };
 
 // TASK:
