@@ -242,8 +242,13 @@ const decorateResponse = function (response) {
 // TEST IT!
 const generateVideoItemHtml = function (video) {
     return `
-    <li> <img src="${video.thumbnail}"> <p>${video.title}</p> </li> `;
+    <li> 
+      <img src="${video.thumbnail}"> 
+      <p>${video.title}</p> 
+    </li> `;
 };
+
+
 
 // TASK:
 // 1. Create a `addVideosToStore` function that receives an array of decorated video 
@@ -253,14 +258,21 @@ const addVideosToStore = function (videos) {
     store.videos = videos;
 };
 
+addVideosToStore(decorateResponse(mockData));
+console.log(store.videos);
+console.log(generateVideoItemHtml(store.videos[0]));
+
 // TASK:
 // 1. Create a `render` function
 // 2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
 const render = function () {
-  
+    $('.results').html(store.videos.map(video => generateVideoItemHtml(video)));
 };
+
+
+render();
 
 // TASK:
 // 1. Create a `handleFormSubmit` function that adds an event listener to the form
