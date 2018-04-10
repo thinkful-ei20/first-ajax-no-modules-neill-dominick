@@ -177,7 +177,7 @@ const mockData = {
     }
   ]
 };
- 
+
 // DONE!
 const API_KEY = 'AIzaSyBFz0lxQL-8arxYWSUs8rmCQSLM6jqAwrI';
 
@@ -209,7 +209,7 @@ const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 // 3. Make a getJSON call using the query object and sending the provided callback in as the last argument
 // TEST IT! Execute this function and console log the results inside the callback.
 // DONE!
-const fetchVideos = function(searchTerm, callback) {
+const fetchVideos = function (searchTerm, callback) {
   const query = {
     q: `${searchTerm} in:name`,
     key: API_KEY,
@@ -227,15 +227,20 @@ const fetchVideos = function(searchTerm, callback) {
 // WILL have to dig into several nested properties!
 // TEST IT! Grab an example API response and send it into the function - make sure
 // you get back the object you want.
-const decorateResponse = function(response) {
-  
+const decorateResponse = function (response) {
+  return response.items.map(item => { 
+    const id = item.id.videoId; 
+    const title = item.snippet.title; 
+    const thumbnail = item.snippet.thumbnails.default.url; 
+    return { id, title, thumbnail, }; 
+  });
 };
 
 // TASK:
 // 1. Create a `generateVideoItemHtml` function that receives the decorated object
 // 2. Using the object, return an HTML string containing all the expected data
 // TEST IT!
-const generateVideoItemHtml = function(video) {
+const generateVideoItemHtml = function (video) {
 
 };
 
@@ -243,7 +248,7 @@ const generateVideoItemHtml = function(video) {
 // 1. Create a `addVideosToStore` function that receives an array of decorated video 
 // objects and sets the array as the value held in store.items
 // TEST IT!
-const addVideosToStore = function(videos) {
+const addVideosToStore = function (videos) {
 
 };
 
@@ -252,7 +257,7 @@ const addVideosToStore = function(videos) {
 // 2. Map through `store.videos`, sending each `video` through your `generateVideoItemHtml`
 // 3. Add your array of DOM elements to the appropriate DOM element
 // TEST IT!
-const render = function() {
+const render = function () {
 
 };
 
@@ -267,7 +272,7 @@ const render = function() {
 //   f) Inside the callback, add the decorated response into your store using the `addVideosToStore` function
 //   g) Inside the callback, run the `render` function 
 // TEST IT!
-const handleFormSubmit = function() {
+const handleFormSubmit = function () {
 
 };
 
